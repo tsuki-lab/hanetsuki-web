@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "hanetuki-e3472",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

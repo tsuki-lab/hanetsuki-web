@@ -1,19 +1,4 @@
 $(function () {
-  // 開発途中
-  // https://script.google.com/macros/s/AKfycbzsnefRhIkOxNzlP49DDBpKA29xLFRekme8OWx1Gmg8FG_XHfM/exec
-  // $.ajax({
-  //   type: 'GET',
-  //   url: 'https://script.google.com/macros/s/AKfycbzsnefRhIkOxNzlP49DDBpKA29xLFRekme8OWx1Gmg8FG_XHfM/exec?name=gallery',
-  //   dataType: 'json',
-  // })
-  // .done(function(res, a, b) {
-  //   let galleryList = res;
-  //   console.log(galleryList);
-  // })
-  // .fail(function(jqXHR, status) {
-  //   alert(status);
-  // });
-
   // デバイスにあわせたコンテンツサイズ
   var view = $(window).innerHeight();
   $("#hero").css("height", view);
@@ -78,7 +63,7 @@ $(function () {
   let fadeInBlockArray = [];
   const fadeInBlock = $('.fade_in_block');
   fadeInBlock.each(function (a){
-    fadeInBlockArray[a] = fadeInBlock.eq(a).offset().top;    
+    fadeInBlockArray[a] = fadeInBlock.eq(a).offset().top;
   });
 
   const functionLine = view - view / 6;

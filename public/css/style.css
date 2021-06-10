@@ -16,7 +16,6 @@
 * 00. 未整頓
 *******************************************/
 
-
 /*
 *   common
 *******************************************/
@@ -32,7 +31,7 @@ body {
     Meiryo, serif;
   margin: 0;
   padding: 0;
-  color: #333333e5;
+  color: #2d2d2de5;
 }
 
 h2 {
@@ -52,7 +51,7 @@ a {
 
 a:hover,
 a:focus {
-  color: #333333e5;
+  color: #2d2d2de5;
   text-decoration: none;
 }
 
@@ -62,7 +61,7 @@ dd {
 
 input:focus,
 textarea:focus {
-  box-shadow: 0 0 1px 0 #333333e5;
+  box-shadow: 0 0 1px 0 #2d2d2de5;
   outline: 0;
 }
 
@@ -73,7 +72,6 @@ button {
 button:focus {
   outline: 0;
 }
-
 
 /*
 *   content-wrap
@@ -101,9 +99,10 @@ section {
   max-width: 700px;
   width: 90vw;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 20px;
   text-align: center;
   background: #fff;
+  border-radius: 0.5rem;
 }
 
 .modal_wrap {
@@ -130,9 +129,9 @@ section {
 }
 
 .random_text {
-  transition: all .3s;
+  transition: all 0.3s;
   opacity: 0;
-  transform: translateY(.8rem);
+  transform: translateY(0.8rem);
   display: inline-block;
 }
 
@@ -142,7 +141,7 @@ section {
 }
 
 .fade_in_block {
-  transition: all .7s;
+  transition: all 0.7s;
   opacity: 0;
   transform: translateY(2rem);
 }
@@ -233,13 +232,12 @@ section {
   background: #ff4261;
 }
 
-
 /*
 *   header
 *******************************************/
 header > .modal_wrap::before {
   content: "";
-  background: #ff8e9d;
+  background: #ff8398;
   position: absolute;
   left: 0;
   right: 100%;
@@ -250,7 +248,7 @@ header > .modal_wrap::before {
 
 header > .modal_wrap::after {
   content: "";
-  background: #ff8e9d;
+  background: #ff8398;
   position: absolute;
   left: 100%;
   right: 0;
@@ -482,7 +480,6 @@ header > .modal_wrap.on::after {
   letter-spacing: 0.12rem;
 }
 
-
 /*
 *   top
 *******************************************/
@@ -512,7 +509,6 @@ header > .modal_wrap.on::after {
   z-index: -1;
 }
 
-
 /*
 *   about
 *******************************************/
@@ -527,9 +523,10 @@ header > .modal_wrap.on::after {
 }
 
 .profile_detail {
-  max-width: 666px;
+  max-width: 560px;
   margin: 0 auto;
-  text-align: left;
+  text-align: justify;
+  text-align-last: justify;
 }
 
 .profile > dd {
@@ -564,12 +561,11 @@ header > .modal_wrap.on::after {
   content: "/ ";
 }
 
-
 /*
 *   gallery
 *******************************************/
 #gallery {
-  background: #ff9aa7;
+  background: #ff8398;
 }
 
 .image_list {
@@ -623,7 +619,7 @@ header > .modal_wrap.on::after {
   left: 0;
   opacity: 1;
   z-index: 2;
-  color: #333333e5;
+  color: #2d2d2de5;
 }
 
 .image_item > a > img {
@@ -659,6 +655,22 @@ header > .modal_wrap.on::after {
   .image_list > .image_item:nth-of-type(9n + 9) {
     margin-right: 5px;
   }
+
+  .image_list > .image_item:nth-of-type(9n + 2),
+  .image_list > .image_item:nth-of-type(9n + 7) {
+    transition-delay: 0.15s;
+  }
+  .image_list > .image_item:nth-of-type(9n + 3),
+  .image_list > .image_item:nth-of-type(9n + 8) {
+    transition-delay: 0.3s;
+  }
+  .image_list > .image_item:nth-of-type(9n + 4),
+  .image_list > .image_item:nth-of-type(9n + 9) {
+    transition-delay: 0.45s;
+  }
+  .image_list > .image_item:nth-of-type(9n + 5) {
+    transition-delay: 0.6s;
+  }
 }
 
 @media (min-width: 571px) and (max-width: 911px) {
@@ -679,6 +691,14 @@ header > .modal_wrap.on::after {
   .image_list > .image_item:nth-of-type(5n + 5) {
     margin-right: 5px;
   }
+
+  .image_list > .image_item:nth-of-type(5n + 2),
+  .image_list > .image_item:nth-of-type(5n + 5) {
+    transition-delay: 0.15s;
+  }
+  .image_list > .image_item:nth-of-type(5n + 3) {
+    transition-delay: 0.3s;
+  }
 }
 
 @media (max-width: 570px) {
@@ -689,19 +709,24 @@ header > .modal_wrap.on::after {
 
   .image_list > .image_item:nth-of-type(3n + 2) {
     margin: -95px 2.5px;
-    transform: translateX(calc(-50% - 2.5px));
+    position: relative;
+    right: calc(25.5% + 2.5px);
   }
 
   .image_list > .image_item:nth-of-type(3n) {
     margin: -95px 2.5px;
-    transform: translateX(calc(50% + 2.5px));
+    position: relative;
+    left: calc(25.5% + 2.5px);
   }
 
   .image_list:last-of-type > .image_item:last-of-type {
     display: none;
   }
-}
 
+  .image_list > .image_item:nth-of-type(3n + 3) {
+    transition-delay: 0.15s;
+  }
+}
 
 /*
 *   Goods & Books
@@ -712,45 +737,45 @@ header > .modal_wrap.on::after {
   display: flex;
   margin: 30px auto 0;
   position: relative;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 .item_thum {
   width: 170px;
   overflow: hidden;
   align-self: flex-start;
-  box-shadow: 0 0 20px #ff9aa7;
+  box-shadow: 0 0 20px #ff8398;
   position: relative;
   background: #fff;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 .item_thum::before {
   content: "";
-  background: #ff9aa740;
+  background: #ff839840;
   top: 0;
   left: 0;
   right: 100%;
   bottom: 100%;
   z-index: 1;
   position: absolute;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 .item_thum::after {
   content: "";
-  background: #ff9aa740;
+  background: #ff839840;
   top: 100%;
   left: 100%;
   right: 0;
   bottom: 0;
   z-index: 1;
   position: absolute;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 .item_thum:hover {
-  box-shadow: 0 0 0 #ff9aa7;
+  box-shadow: 0 0 0 #ff8398;
   border-radius: 5px;
 }
 
@@ -768,7 +793,7 @@ header > .modal_wrap.on::after {
   width: 100%;
   max-height: 100%;
   object-fit: cover;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .item_thum:hover > img {
@@ -789,14 +814,14 @@ header > .modal_wrap.on::after {
   border: 1px solid #484848;
   padding: 0.2rem;
   box-sizing: content-box;
-  transition: .4s;
+  transition: 0.4s;
   opacity: 0;
 }
 
 .item_thum:hover > .shop_button {
   opacity: 1;
   transform: translate(-50%, -50%);
-  transition-delay: .4s;
+  transition-delay: 0.4s;
 }
 
 .item_text {
@@ -813,7 +838,7 @@ header > .modal_wrap.on::after {
   font-size: 29px;
   color: #ff42629b;
   font-family: serif;
-  margin: .8rem 0 .5rem;
+  margin: 0.8rem 0 0.5rem;
   line-height: 29px;
 }
 
@@ -821,7 +846,7 @@ header > .modal_wrap.on::after {
   font-size: 12.5px;
   font-weight: 400;
   font-family: serif;
-  margin-bottom: .1rem;
+  margin-bottom: 0.1rem;
   padding-left: 5px;
 }
 
@@ -861,7 +886,7 @@ header > .modal_wrap.on::after {
 /*
 *   history
 *******************************************/
-#event_histry {
+#event_history {
   background: #e4e4e4;
 }
 
@@ -902,7 +927,7 @@ header > .modal_wrap.on::after {
   padding-right: 10px;
 }
 
-.first_event::after {
+.event_list:last-of-type > dd:last-of-type::after {
   content: "※サークル初参加";
   padding-left: 10px;
 }
@@ -933,7 +958,6 @@ header > .modal_wrap.on::after {
     margin-top: 0;
   }
 }
-
 
 /*
 *   contact
@@ -966,7 +990,7 @@ header > .modal_wrap.on::after {
 #contact textarea {
   width: 100%;
   border: none;
-  background: #ff9aa7;
+  background: #ff8398;
   padding: 0 10px;
 }
 
@@ -981,13 +1005,14 @@ header > .modal_wrap.on::after {
 
 #contact button {
   background: transparent;
-  border: 2px solid #ff8e9d;
+  border: 2px solid #ff8398;
   height: 28px;
   width: 100%;
 }
 
 #contact .modal_wrap {
-  background: #ff8e9db3;
+  background: #ff8398b3;
+  z-index: 101;
 }
 
 #contact dl {
@@ -1011,26 +1036,39 @@ header > .modal_wrap.on::after {
   line-height: 24px;
   text-align: left;
   padding-top: 5px;
+  max-height: 10rem;
+  overflow-x: auto;
+}
+
+#contact dd:last-of-type {
+  margin-bottom: 0.5rem;
 }
 
 button#submit,
-button#cancel {
+button#cancel,
+button#close {
   width: 175px;
-  padding: 7px;
+  padding: 7px 0;
   height: auto;
+  border-radius: 0.3rem;
 }
 
 button#submit {
-  background: #ff8e9d;
-  border: 2px solid #ff8e9d;
+  background: #ff8398;
+  border: 2px solid #ff8398;
   color: #fff;
-  margin: 0 13px 30px;
+  margin: 0 13px;
 }
 
 button#cancel {
   background: #e4e4e4;
   border: 2px solid #e4e4e4;
-  margin: 25px 13px 10px;
+  margin: 0 13px;
+}
+
+button#close {
+  background: #e4e4e4;
+  border: 2px solid #e4e4e4;
 }
 
 #notice {
@@ -1066,7 +1104,6 @@ button#cancel {
   }
 }
 
-
 /*
 *   footer
 *******************************************/
@@ -1075,7 +1112,6 @@ footer {
   margin: 90px 0 10px;
   font-size: 12px;
 }
-
 
 /*
 *   icon
@@ -1086,12 +1122,12 @@ footer {
   box-sizing: content-box;
   width: 35px;
   height: 35px;
-  margin: 0 .5rem;
+  margin: 0 0.5rem;
   cursor: pointer;
 }
 
 .sns_icon > .icon_hover {
-  transition: .3s;
+  transition: 0.3s;
   position: absolute;
   top: 0;
   right: 0;
@@ -1105,12 +1141,11 @@ footer {
   opacity: 1;
 }
 
-
 /*
 *   未整頓
 *******************************************/
 #result {
-  background: #ff8e9d;
+  background: #ff8398;
   overflow: hidden;
 }
 

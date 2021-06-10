@@ -73,15 +73,6 @@
                     </ul>
                   </a>
                 </li>
-                <li>
-                  <a href="#contact">
-                    <ul>
-                      <li>Contact</li>
-                      <li></li>
-                      <li>コンタクト</li>
-                    </ul>
-                  </a>
-                </li>
               </ul>
             </dd>
           </dl>
@@ -108,19 +99,19 @@
         </dl>
 
         <p class="profile_detail fade_in_block">
-          1995/04/10生まれ。東京都在住。コミックマーケットをきっかけにイラストを描き始め、
-          ファンタジー寄りの一時創作女の子を中心に制作しています。また、webコンテンツに
-          興味を持ち、フロントエンドエンジニアとしてweb制作に携わっています。
+          東京都在住。コミックマーケットへの一般参加をきっかけにイラストを描き始め、一次創作をメインに活動をしています。
+          現在は、フロントエンドエンジニアとしてwebアプリケーション開発に携わっています。
         </p>
         <dl class="skill_list fade_in_block">
           <dt>SKILL</dt>
           <dd>CLIP STUDIO PAINT</dd>
-          <dd>PhotoshopCC</dd>
           <dd>HTML5</dd>
           <dd>CSS3</dd>
           <dd>JavaScript</dd>
           <dd>jQuery</dd>
           <dd>Vue.js</dd>
+          <dd>Next.js</dd>
+          <dd>TypeScript</dd>
         </dl>
         <a class="sns_icon fade_in_block" href="https://twitter.com/touka_0410" target="_blank">
           <img class="icon_hover" src="./img/parts/twitter_hover.svg" alt="twitter">
@@ -253,49 +244,6 @@
           <dt>2015/05/05</dt>
           <dd class="first_event">COMITIA112 (東京 う-15b)</dd>
         </dl>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="content_wrap">
-        <h2 class="wrap_title random_set_text">Contact</h2>
-        <form id="contact_form" action="mail.php" method="post">
-          <div class="contact_form fade_in_block">
-            <p class="message_detail">
-              何かございましたら、こちらのコンタクトフォームよりご連絡ください。
-            </p>
-            <p><input type="text" placeholder="お名前" name="お名前" /></p>
-            <p><input type="text" placeholder="件名" name="件名" /></p>
-            <p>
-              <input type="email" placeholder="メールアドレス" name="メールアドレス" />
-            </p>
-            <p>
-              <textarea cols="87" rows="7" placeholder="本文" name="本文"></textarea>
-            </p>
-            <button type="button" onclick="confirmForm()">確認する</button>
-            <p id="notice"></p>
-          </div>
-        </form>
-      </div>
-
-      <div class="modal_wrap">
-        <div class="popup_wrap">
-          <p>こちらの内容で送信してよろしいでしょうか？</p>
-          <dl>
-            <dt>お名前</dt>
-            <dd id="contactName"></dd>
-            <dt>件名</dt>
-            <dd id="contactTitle"></dd>
-            <dt>メールアドレス</dt>
-            <dd id="contactMail"></dd>
-            <dt>本文</dt>
-            <dd id="contactMessage"></dd>
-          </dl>
-          <div class="buttonArea">
-            <button type="button" id="cancel">キャンセル</button>
-            <button type="button" id="submit">送信する</button>
-          </div>
-        </div>
       </div>
     </section>
   </main>
