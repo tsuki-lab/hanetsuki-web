@@ -99,27 +99,27 @@ $(function () {
   });
 
   // lightboxサボり用
-  var replace = [
-    { "": /.png/g },
-    { "": /.jpg/g },
-    { " ": /_/g },
-    { "": /\.\/src\/assets\/img\//g }
-  ];
+  // var replace = [
+  //   { "": /.png/g },
+  //   { "": /.jpg/g },
+  //   { " ": /_/g },
+  //   { "": /\.\/assets\/img\//g }
+  // ];
   var gallery = $(".image_list a");
-  gallery.each(function (i) {
-    var src = gallery
-      .find("img")
-      .eq(i)
-      .attr("src")
-      .replace("thum/", "");
-    gallery.eq(i).attr("href", src);
-    $.each(replace, function (index, value) {
-      $.each(value, function (key, value) {
-        src = src.replace(value, key);
-        gallery.eq(i).attr("data-title", src);
-      });
-    });
-  });
+  // gallery.each(function (i) {
+  //   var src = gallery
+  //     .find("img")
+  //     .eq(i)
+  //     .attr("src")
+  //     .replace("thum/", "");
+  //   gallery.eq(i).attr("href", src);
+  //   $.each(replace, function (index, value) {
+  //     $.each(value, function (key, value) {
+  //       src = src.replace(value, key);
+  //       gallery.eq(i).attr("data-title", src);
+  //     });
+  //   });
+  // });
 
   // galleryの画像表示処理
   gallery
