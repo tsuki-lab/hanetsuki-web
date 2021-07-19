@@ -1,4 +1,4 @@
-import './assets/scss/style.scss'
+import './styles/style.scss'
 import $ from 'jquery'
 import 'lightbox2'
 

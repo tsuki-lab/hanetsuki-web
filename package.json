@@ -1,32 +1,29 @@
 {
   "name": "hanetsuki-web",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "はねつきとうかのwebサイト",
   "main": "index.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview",
-    "deploy": "firebase deploy"
+    "serve": "vite preview"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tsuki-lab/pj__hanetsuki-web.git"
+    "url": "git+https://github.com/tsuki-lab/hanetsuki-web.git"
   },
   "keywords": [
     "website",
     "jquery",
-    "lightbox2",
-    "firebase"
+    "lightbox2"
   ],
   "author": "touka.hanetsuki",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tsuki-lab/pj__hanetsuki-web/issues"
+    "url": "https://github.com/tsuki-lab/hanetsuki-web/issues"
   },
   "homepage": "https://hanetuki.com",
   "devDependencies": {
-    "firebase-tools": "^9.16.0",
     "sass": "^1.35.2",
     "vite": "^2.4.0"
   },
