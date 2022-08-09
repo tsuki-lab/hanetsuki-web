@@ -1,5 +1,6 @@
 # Dependency directories
 node_modules/
-
+
 # Compiled output dir
 dist/
+.DS_Store
