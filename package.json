@@ -28,7 +28,7 @@
     "vite": "^6.4.3"
   },
   "dependencies": {
-    "bootstrap": "^5.3.3",
+    "bootstrap": "^5.3.8",
     "jquery": "^3.7.1",
     "lightbox2": "^2.11.4"
   },
