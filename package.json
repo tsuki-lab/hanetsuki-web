@@ -24,7 +24,7 @@
   },
   "homepage": "https://art.tsuki-lab.net",
   "devDependencies": {
-    "sass": "^1.103.1",
+    "sass": "^1.104.1",
     "vite": "^6.4.3"
   },
   "dependencies": {
