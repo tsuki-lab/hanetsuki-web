@@ -49,7 +49,7 @@ jobs:
             echo "::error::デフォルトブランチ（$DEFAULT_BRANCH）上で実行してください"
             exit 1
           fi
-          if ! printf '%s' "$TAG" | grep -Eq "$TAG_PATTERN"; then
+          if [[ ! "$TAG" =~ $TAG_PATTERN ]]; then
             echo "::error::タグの形式が不正です: $TAG（期待: $TAG_PATTERN）"
             exit 1
           fi
