@@ -1,0 +1,109 @@
+# 手動実行でタグを作成し、GitHub Release を発行する。
+#
+# 使い方: Actions → "Tag & Release" → Run workflow（デフォルトブランチ上で実行）
+#   tag   : 作成するタグ（形式: v2.0.3）
+#   notes : Release ノート（日本語）。省略時は自動生成ノートのみ。
+#
+# このリポジトリにはタグ起動のリリースワークフローが無いため、タグ作成と GitHub Release の発行を本ワークフローが行う。
+name: Tag & Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "作成するタグ（例: v2.0.3）"
+        required: true
+        type: string
+      notes:
+        description: "Release ノート（日本語）"
+        required: false
+        type: string
+        default: ""
+
+permissions:
+  contents: write
+  actions: write
+
+env:
+  TAG_PATTERN: '^v[0-9]+.[0-9]+.[0-9]+$'
+  # タグの push で動く既存のリリースワークフロー（空なら本ワークフローが Release を作成する）
+  RELEASE_WORKFLOW: ''
+
+jobs:
+  tag-release:
+    name: Tag & Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate
+        env:
+          TAG: ${{ inputs.tag }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          set -euo pipefail
+          if [ "$GITHUB_REF_NAME" != "$DEFAULT_BRANCH" ]; then
+            echo "::error::デフォルトブランチ（$DEFAULT_BRANCH）上で実行してください"
+            exit 1
+          fi
+          if ! printf '%s' "$TAG" | grep -Eq "$TAG_PATTERN"; then
+            echo "::error::タグの形式が不正です: $TAG（期待: $TAG_PATTERN）"
+            exit 1
+          fi
+          if git rev-parse -q --verify "refs/tags/$TAG" >/dev/null; then
+            echo "::error::タグ $TAG は既に存在します"
+            exit 1
+          fi
+
+      - name: Create tag
+        env:
+          TAG: ${{ inputs.tag }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag -a "$TAG" -m "$TAG"
+          git push origin "refs/tags/$TAG"
+
+      - name: Run existing release workflow
+        if: env.RELEASE_WORKFLOW != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag }}
+          NOTES: ${{ inputs.notes }}
+        run: |
+          set -euo pipefail
+          # GITHUB_TOKEN で作ったタグの push ではワークフローが起動しないため、
+          # workflow_dispatch でタグを ref に指定して既存ワークフローを実行する。
+          gh workflow run "$RELEASE_WORKFLOW" --ref "$TAG"
+          RUN_ID=""
+          for _ in $(seq 1 30); do
+            sleep 5
+            RUN_ID=$(gh run list --workflow "$RELEASE_WORKFLOW" --branch "$TAG" --event workflow_dispatch --limit 1 --json databaseId --jq '.[0].databaseId // empty')
+            [ -n "$RUN_ID" ] && break
+          done
+          if [ -z "$RUN_ID" ]; then
+            echo "::error::$RELEASE_WORKFLOW の実行を検出できませんでした"
+            exit 1
+          fi
+          gh run watch "$RUN_ID" --exit-status
+          if [ -n "$NOTES" ]; then
+            gh release edit "$TAG" --notes "$NOTES"
+          fi
+
+      - name: Create GitHub Release
+        if: env.RELEASE_WORKFLOW == ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag }}
+          NOTES: ${{ inputs.notes }}
+        run: |
+          set -euo pipefail
+          if [ -n "$NOTES" ]; then
+            gh release create "$TAG" --verify-tag --title "$TAG" --notes "$NOTES" --generate-notes
+          else
+            gh release create "$TAG" --verify-tag --title "$TAG" --generate-notes
+          fi
